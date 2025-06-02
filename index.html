@@ -25,7 +25,7 @@
   <p>Redireccionando a WhatsApp...</p>
 
   <script>
-    // Lista de user-agents conocidos como bots (simplificada)
+    // Lista de bots conocidos
     const bots = [
       /facebookexternalhit/i,
       /facebot/i,
@@ -44,13 +44,13 @@
     ];
 
     const ua = navigator.userAgent;
-
     const esBot = bots.some(bot => bot.test(ua));
 
     if (!esBot) {
-      // Redirección ofuscada para evitar detección directa
-      const numero = ['+', '5', '4', '9', '2', '6', '1', '2', '3', '4', '5', '8', '9', '1'];
-      const url = 'https://wa.me/' + numero.join('');
+      // Número y mensaje ofuscados
+      const numero = ['+','5','4','9','2','6','1','2','3','4','5','8','9','1'];
+      const mensaje = encodeURIComponent("Hola, vengo para crear mi usuario");
+      const url = 'https://wa.me/' + numero.join('') + '?text=' + mensaje;
       setTimeout(() => {
         window.location.href = url;
       }, 500); // redirección rápida
