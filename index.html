@@ -132,7 +132,10 @@
     }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
     fbq('init', '527295206981757');
-    fbq('track', 'PageView');
+
+    document.addEventListener("DOMContentLoaded", function() {
+      fbq('track', 'PageView');
+    });
   </script>
 
   <div class="container">
