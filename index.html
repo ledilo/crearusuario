@@ -182,12 +182,8 @@
       eventoDisparado = true;
     }
 
-    const numero = "5492616087245"; // ✅ sin codificar
-    const mensaje = encodeURIComponent("Hola, quiero más información..");
-    const link = `https://wa.me/${numero}?text=${mensaje}`;
-
-    // Safari necesita redirección absoluta
-    window.location.href = link;
+    // Enlace 100% compatible con iPhone y navegadores embebidos
+    window.location.href = "https://api.whatsapp.com/send?phone=5492616087245&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n..";
   }
 </script>
 </body>
