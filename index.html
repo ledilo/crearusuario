@@ -6,7 +6,6 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-      // Detectar bots de Meta/Facebook/Instagram/WhatsApp
       const bots = [
         /facebookexternalhit/i,
         /Facebot/i,
@@ -19,8 +18,8 @@
       const isBot = bots.some(bot => bot.test(userAgent));
 
       if (!isBot) {
-        // Número +542615002209 en base64: NTM0MjYxNTAwMjIwOQ==
-        const encoded = "NTM0MjYxNTAwMjIwOQ==";
+        // +542615002209 → Base64 correcto
+        const encoded = "NTQyNjE1MDAyMjA5";
         const decoded = atob(encoded);
         const mensaje = encodeURIComponent("Hola, vengo por la publicidad");
         window.location.href = `https://wa.me/${decoded}?text=${mensaje}`;
@@ -33,3 +32,4 @@
     <noscript>Activá JavaScript para continuar.</noscript>
   </body>
 </html>
+
