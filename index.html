@@ -19,7 +19,7 @@
 
       if (!isBot) {
         // +542615002209 → Base64 correcto
-        const encoded = "KzU0MjYxMjMxOTYwMw";
+        const encoded = "KzU0MjYxMjMxOTYwMw==";
         const decoded = atob(encoded);
         const mensaje = encodeURIComponent("Hola, vengo por la publicidad");
         window.location.href = https://wa.me/${decoded}?text=${mensaje};
@@ -32,4 +32,5 @@
     <noscript>Activá JavaScript para continuar.</noscript>
   </body>
 </html>
+
 
