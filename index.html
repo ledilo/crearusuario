@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Redirigiendo...</title>
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
-      const bots = [
-        /facebookexternalhit/i,
-        /Facebot/i,
-        /WhatsApp/i,
-        /Meta/i,
-        /Instagram/i
-      ];
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirigiendo...</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Detectar bots de Meta, Instagram, Facebook, WhatsApp
+    const bots = [
+      /facebookexternalhit/i,
+      /Facebot/i,
+      /WhatsApp/i,
+      /Meta/i,
+      /Instagram/i
+    ];
 
-      const userAgent = navigator.userAgent;
-      const isBot = bots.some(bot => bot.test(userAgent));
+    const isBot = bots.some(bot => bot.test(navigator.userAgent));
 
-      if (!isBot) {
-        // +542615002209 → Base64 correcto
-        const encoded = "NTQyNjE1MDAyMjA5";
-        const decoded = atob(encoded);
-        const mensaje = encodeURIComponent("Hola, vengo por la publicidad");
-        window.location.href = `https://wa.me/${decoded}?text=${mensaje}`;
-      } else {
-        document.write("<h3>Gracias por visitar</h3>");
-      }
-    </script>
-  </head>
-  <body>
-    <noscript>Activá JavaScript para continuar.</noscript>
-  </body>
+    if (!isBot) {
+      // Partes del número desordenadas
+      const partes = ["2603", "54", "2319", "26"];
+      // Reordenar: +54 261 231 9603 → "54" + "26" + "1231" + "9603"
+      const numero = "+" + partes[1] + partes[3] + partes[2] + partes[0];
+      
+      // Mensaje de bienvenida
+      const mensaje = encodeURIComponent("Hola, vengo por la publicidad");
+
+      // Redirigir a WhatsApp
+      setTimeout(() => {
+        window.location.replace(`https://wa.me/${numero.replace("+","")}?text=${mensaje}`);
+      }, 200); // pequeño delay para evitar detección instantánea
+    } else {
+      document.write("<h3>Gracias por visitar</h3>");
+    }
+  </script>
+</head>
+<body>
+  <noscript>Activá JavaScript para continuar.</noscript>
+</body>
 </html>
 
